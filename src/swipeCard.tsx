@@ -35,6 +35,9 @@ function SwipeCard({ id, name, image, description }: SwipeCardProps) {
     <Card
       style={{
         border: `1px solid ${getBorderColor()}`,
+        height: "70vh",
+        width: "90vw",
+        display: "flex",
       }}
     >
       {image && (
