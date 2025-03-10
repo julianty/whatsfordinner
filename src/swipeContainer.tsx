@@ -1,4 +1,4 @@
-import { Button, CopyButton, Stack, Text } from "@mantine/core";
+import { Box, Button, CopyButton, Group, Stack, Text } from "@mantine/core";
 import SwipeCard from "./swipeCard.tsx";
 import { useSession } from "./useSession.tsx";
 import React from "react";
@@ -34,18 +34,26 @@ function SwipeContainer() {
       {allOptionsDecided &&
         options.length !== 0 &&
         optionsFromURL == undefined && (
-          <Stack style={{ width: "50%" }}>
-            <Text> Copy the link below and send it to a friend</Text>
-            <Text truncate="end" style={{ textWrap: "nowrap" }}>
-              {shareableLink}
+          <Stack>
+            <Text>
+              Your part is done! Now copy this link and send it to your friend!
             </Text>
-            <CopyButton value={`${shareableLink}`}>
-              {({ copied, copy }) => (
-                <Button color={copied ? "teal" : "blue"} onClick={copy}>
-                  {copied ? "Copied url" : "Copy url"}
-                </Button>
-              )}
-            </CopyButton>
+            <Group grow preventGrowOverflow={false} wrap="nowrap">
+              <Box w={200}>
+                <Text truncate="end">{shareableLink}</Text>
+              </Box>
+              <CopyButton value={`${shareableLink}`}>
+                {({ copied, copy }) => (
+                  <Button
+                    style={{ minWidth: "100px" }}
+                    color={copied ? "teal" : "blue"}
+                    onClick={copy}
+                  >
+                    {copied ? "Copied" : "Copy"}
+                  </Button>
+                )}
+              </CopyButton>
+            </Group>
           </Stack>
         )}
       {optionsFromURL && (
