@@ -24,6 +24,8 @@ import { SwipeCardProps } from "./types";
 // ];
 
 type SessionContextType = {
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
   options: SwipeCardProps[];
   setOptions: React.Dispatch<React.SetStateAction<SwipeCardProps[]>>;
   optionsFromURL?: SwipeCardProps[];
@@ -40,6 +42,7 @@ export const SessionProvider = ({
   const [optionsFromURL, setOptionsFromURL] = React.useState<
     SwipeCardProps[] | undefined
   >(undefined);
+  const [active, setActive] = React.useState(false);
   React.useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const encodedOptions = urlParams.get("options");
@@ -60,7 +63,9 @@ export const SessionProvider = ({
     );
   }
   return (
-    <SessionContext.Provider value={{ options, setOptions, optionsFromURL }}>
+    <SessionContext.Provider
+      value={{ active, setActive, options, setOptions, optionsFromURL }}
+    >
       {children}
     </SessionContext.Provider>
   );

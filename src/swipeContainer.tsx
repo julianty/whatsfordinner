@@ -6,7 +6,7 @@ import generateShareableLink from "./lib/generateShareableLink.ts";
 import findMatchingOptions from "./lib/findMatchingOptions.ts";
 import { SwipeCardProps } from "./types.ts";
 function SwipeContainer() {
-  const { options, optionsFromURL } = useSession();
+  const { options, optionsFromURL, setActive } = useSession();
   const shareableLink = React.useMemo(() => {
     return generateShareableLink(options);
   }, [options]);
@@ -15,12 +15,21 @@ function SwipeContainer() {
     () => options.every((option) => option.status !== "undecided"),
     [options]
   );
+
+  React.useEffect(() => {
+    console.log(allOptionsDecided);
+    if (allOptionsDecided) {
+      setActive(false);
+    }
+  }, [allOptionsDecided, setActive]);
+
   function getNextOption(options: SwipeCardProps[]) {
     const nextOption = options.find((option) => option.status === "undecided");
     if (nextOption) {
       return <SwipeCard key={nextOption.id} {...nextOption} />;
     }
   }
+
   return (
     <Stack
       style={{

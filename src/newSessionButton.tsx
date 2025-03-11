@@ -6,7 +6,7 @@ import { Status } from "./types";
 import dinnerOptions from "./data/dinnerOptions.json";
 function NewSessionButton() {
   const [opened, { open, close }] = useDisclosure(false);
-  const { options, setOptions } = useSession();
+  const { options, setOptions, active } = useSession();
 
   const form = useForm({
     mode: "uncontrolled",
@@ -57,7 +57,7 @@ function NewSessionButton() {
           </Button>
         </Stack>
       </Modal>
-      <Button onClick={open}>Create new session</Button>
+      {!active && <Button onClick={open}>Create new session</Button>}
     </>
   );
 }
