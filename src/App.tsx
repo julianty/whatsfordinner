@@ -8,6 +8,7 @@ function App() {
   return (
     <MantineProvider>
       <SessionProvider>
+        <Navbar />
         <Stack
           gap="lg"
           style={{
@@ -15,12 +16,11 @@ function App() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            height: "100vh",
-            width: "100vw",
+            height: "100%",
+            width: "100%",
             padding: "1rem",
           }}
         >
-          <Navbar />
           <NewSessionButton />
           <Group>
             <SwipeContainer />
