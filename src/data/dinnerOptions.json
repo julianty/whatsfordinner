@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Pizza",
+    "image": "pizza-the-nix-company-ljvm17bH-e0-unsplash.jpg"
+  },
+  {
+    "name": "Chick-fil-a",
+    "image": "chicken-sandwich-eiliv-aceron-5nvt9BrLaAc-unsplash.jpg"
+  },
+  {
+    "name": "Sushi",
+    "image": "sushi-derek-duran-Jz4QMhLvGgw-unsplash.jpg"
+  },
+  {
+    "name": "Chipotle",
+    "image": "burrito-max-griss-Spp1G283dow-unsplash.jpg"
+  },
+  {
+    "name": "Salad",
+    "image": "salad-taylor-kiser-EvoIiaIVRzU-unsplash.jpg"
+  }
+]
