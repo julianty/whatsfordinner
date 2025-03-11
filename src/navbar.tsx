@@ -1,9 +1,16 @@
-import { Anchor } from "@mantine/core";
+import { Title } from "@mantine/core";
 
 function Navbar() {
   return (
-    <div>
-      <Anchor href="/">What's for dinner?</Anchor>
+    <div
+      style={{
+        position: "absolute",
+        display: "flex",
+        justifyContent: "center",
+        padding: "1rem",
+      }}
+    >
+      <Title order={1}>What's for dinner?</Title>
     </div>
   );
 }

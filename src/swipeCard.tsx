@@ -1,9 +1,10 @@
-import { Button, Card, Group, Text, Image } from "@mantine/core";
+import { Card, Group, Image, Box, Title } from "@mantine/core";
 import React from "react";
 import { Status, SwipeCardProps } from "./types";
 import { useSession } from "./useSession";
+import SwipeCardButton from "./components/swipeCardButton";
 
-function SwipeCard({ id, name, image, description }: SwipeCardProps) {
+function SwipeCard({ id, name, image }: SwipeCardProps) {
   const { setOptions } = useSession();
   const [status, setStatus] = React.useState<Status>("undecided");
 
@@ -38,6 +39,9 @@ function SwipeCard({ id, name, image, description }: SwipeCardProps) {
         height: "70vh",
         width: "90vw",
         display: "flex",
+        position: "relative",
+        flexDirection: "column",
+        justifyContent: "space-between",
       }}
     >
       {image && (
@@ -45,11 +49,29 @@ function SwipeCard({ id, name, image, description }: SwipeCardProps) {
           <Image style={{ height: "100%" }} src={image} alt={name} />
         </Card.Section>
       )}
-      <Text>{name}</Text>
-      {description && <Text>{description}</Text>}
-      <Group>
-        <Button onClick={() => handleClick("yes")}>Yes</Button>
-        <Button onClick={() => handleClick("no")}>No</Button>
+      <Box
+        bg="rgba(0,0,0,0.7)"
+        style={{
+          width: "100%",
+          position: "absolute",
+          left: 0,
+          top: 0,
+          minHeight: "10%",
+          display: "flex",
+          alignItems: "center",
+          padding: "1rem",
+        }}
+      >
+        <Title order={3}>{name}</Title>
+      </Box>
+      {/* {description && <Text>{description}</Text>} */}
+      <Group justify="space-between" grow>
+        <SwipeCardButton color="green" onClick={() => handleClick("yes")}>
+          Yes
+        </SwipeCardButton>
+        <SwipeCardButton color="red" onClick={() => handleClick("no")}>
+          No
+        </SwipeCardButton>
       </Group>
     </Card>
   );
