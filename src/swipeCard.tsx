@@ -41,8 +41,8 @@ function SwipeCard({ id, name, image, description }: SwipeCardProps) {
       }}
     >
       {image && (
-        <Card.Section>
-          <Image src={image} alt={name} />
+        <Card.Section style={{ maxHeight: "90%" }}>
+          <Image style={{ height: "100%" }} src={image} alt={name} />
         </Card.Section>
       )}
       <Text>{name}</Text>
